@@ -152,7 +152,6 @@ router.post("/signup/official", verify_token, async (req, res) => {
 			countryCode,
 			gender,
 			dob,
-			dept,
 			role,
 		} = req.body;
 
@@ -174,7 +173,6 @@ router.post("/signup/official", verify_token, async (req, res) => {
 			countryCode,
 			gender,
 			dob: convTime(dob),
-			dept,
 			role,
 		});
 
@@ -274,11 +272,9 @@ router.post("/login/official", async (req, res) => {
 		if (!isMatch)
 			return res.status(400).json({ message: "Invalid credentials" });
 
-		if (
-			official.role !== "admin" &&
-			(official.role !== req.body.role || official.dept !== req.body.dept)
-		)
+		if (official.role !== "admin" && official.role !== req.body.role) {
 			return res.status(400).json({ message: "Unauthorized access!" });
+		}
 
 		if (!official.isVerified) {
 			return res.status(400).json({
@@ -541,9 +537,7 @@ router.post("/forgot-password/official", async (req, res) => {
 
 		if (
 			!official ||
-			(official.role !== "admin" &&
-				(official.dept !== req.body.dept ||
-					official.role !== req.body.role))
+			(official.role !== "admin" && official.role !== req.body.role)
 		) {
 			return res.status(404).json({
 				message: "Official not found",
