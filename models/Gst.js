@@ -61,7 +61,7 @@ const gstSchema = new mongoose.Schema({
 	citizenIndia: { type: Boolean },
 	passportNo: { type: String },
 	aadhaarNo: { type: String },
-	residentialAddress: { type: Address },
+	residentialAddress: { type: Address.schema },
 
 	//->documents
 	photo: { type: String },
@@ -77,7 +77,7 @@ const gstSchema = new mongoose.Schema({
 	hasAuthorizedRepresentative: { type: Boolean, required: true },
 
 	//Principal Place of Business
-	principalPlaceOfBusiness: { type: Address, required: true },
+	principalPlaceOfBusiness: { type: Address.schema, required: true },
 	stateJurisdiction: { type: String, required: true },
 	centerJurisdiction: {
 		commisionerate: { type: String, required: true },
@@ -100,7 +100,7 @@ const gstSchema = new mongoose.Schema({
 		required: true,
 	},
 	otherNatureOfBusiness: { type: [String] },
-	additionalPlaceOfBusiness: { type: [Address] },
+	additionalPlaceOfBusiness: { type: [Address.schema] },
 
 	//Goods & Services
 	//->goods

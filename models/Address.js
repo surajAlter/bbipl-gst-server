@@ -12,8 +12,8 @@ const addressSchema = new mongoose.Schema({
 	country: { type: String, required: true, default: "India" },
 	floorNo: { type: String },
 	landmark: { type: String },
-	landmark: { type: String },
 	latitude: { type: String },
+	longitude: { type: String },
 });
 
 const Address = mongoose.model("Address", addressSchema);
