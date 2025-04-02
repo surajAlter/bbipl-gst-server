@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Address = require("./Address");
 
 const gstSchema = new mongoose.Schema({
-	name: { type: String, required: true },
-	mobile: { type: String, required: true },
-	email: { type: String, required: true },
-	message: { type: String, required: true },
-	responseMethod: { type: String, enum: ["email", "mobile"] },
-	responseMessage: { type: String },
-	status: { type: String, enum: ["Pending", "Complete"], default: "Pending" },
+	// name: { type: String, required: true },
+	// mobile: { type: String, required: true },
+	// email: { type: String, required: true },
+	// message: { type: String, required: true },
+	// responseMethod: { type: String, enum: ["email", "mobile"] },
+	// responseMessage: { type: String },
+	// status: { type: String, enum: ["Pending", "Complete"], default: "Pending" },
 
 	//business details
 	tradeName: { type: String },
@@ -52,7 +52,7 @@ const gstSchema = new mongoose.Schema({
 		lastName: { type: String, required: true },
 	},
 	dob: { type: Date, required: true },
-	gender: { type: String, enum: ["male", "female", "other"], required: true },
+	gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
 	telephone: { type: String },
 
 	//->identity info
@@ -119,6 +119,8 @@ const gstSchema = new mongoose.Schema({
 	placeAuthSignatory: { type: String, required: true },
 	designationAuthSignatory: { type: String, required: true },
 	submitDate: { type: Date, default: new Date() },
+
+	userId: { type: mongoose.Schema.Types.ObjectId, required: true },
 
 	// updatedAt: { type: Date, default: new Date() },
 });
